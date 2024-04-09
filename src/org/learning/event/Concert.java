@@ -18,4 +18,28 @@ public class Concert extends Event{
         this.price = price;
     }
 
+    // Methods
+
+
+    // Getters
+
+    public LocalTime getTime() {
+        return time;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+
+
+    // Setters
+
+    public void setTime(LocalTime time) {
+        this.time = time;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
 }
