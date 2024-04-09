@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-
+        // TODO: Validation of user input with error messages
         System.out.print("Enter the title of the event: ");
         String title = scan.nextLine();
 
