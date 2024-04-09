@@ -39,9 +39,32 @@ public class Main {
             response = scan.nextLine().toUpperCase();
         }
 
-
+        System.out.println();
         System.out.println("Booked seats: " + event.getSeatsBooked());
         System.out.println("Available seats: " + (event.getTotalSeats() - event.getSeatsBooked()));
+        System.out.println();
+
+
+
+        System.out.print("Do you want to cancel a reservation? (Y/N) ");
+        response = scan.nextLine().toUpperCase();
+        while (response.equalsIgnoreCase("Y")) {
+            try {
+                System.out.print("How many seats do you want to cancel? ");
+                int seatsToCancel = Integer.parseInt(scan.nextLine());
+                event.cancelReservation(seatsToCancel);
+                System.out.println("Cancellation made successfully!");
+            } catch (IllegalArgumentException e) {
+                System.out.print(e.getMessage());
+            }
+            System.out.print("Do you want to make another cancellation? (Y/N) ");
+            response = scan.nextLine().toUpperCase();
+        }
+
+        System.out.println();
+        System.out.println("Booked seats after cancellations: " + event.getSeatsBooked());
+        System.out.println("Available seats after cancellations: " + (event.getTotalSeats() - event.getSeatsBooked()));
+        System.out.println();
 
         scan.close();
     }
