@@ -5,16 +5,19 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
 
+        // declaring variables
+        Scanner scan = new Scanner(System.in);
         Event event = null;
         boolean flag = false;
+
+
+        // Ask for user input to create a new event, handle exceptions
         while(!flag) {
             System.out.print("Enter the title of the event: ");
             String title = scan.nextLine();
 
             System.out.print("Enter the date of the event (YYYY-MM-DD): ");
-
             LocalDate date = LocalDate.parse(scan.nextLine());
 
             System.out.print("Enter the total number of seats available: ");
@@ -27,10 +30,11 @@ public class Main {
                 System.out.println("\n" + "Error : " + e.getMessage().toUpperCase() + "\n");
             }
         }
-
-
         System.out.println("\n" + "Your Event has been created successfully!" + "\n");
 
+
+
+        // Ask user to MAKE a reservation, handles exceptions + prints result
         System.out.print("Do you want to make a reservation? (Y/N) ");
         String response = scan.nextLine().toUpperCase();
         while (response.equalsIgnoreCase("Y")) {
@@ -45,12 +49,12 @@ public class Main {
             System.out.print("Do you want to make another reservation? (Y/N) ");
             response = scan.nextLine().toUpperCase();
         }
-
         System.out.println("\n" + "Booked seats: " + event.getSeatsBooked());
         System.out.println("Available seats: " + (event.getTotalSeats() - event.getSeatsBooked()) + "\n");
 
 
 
+        // Ask user to CANCEL a reservation, handles exceptions + prints result
         System.out.print("Do you want to cancel a reservation? (Y/N) ");
         response = scan.nextLine().toUpperCase();
         while (response.equalsIgnoreCase("Y")) {
@@ -65,10 +69,12 @@ public class Main {
             System.out.print("Do you want to make another cancellation? (Y/N) ");
             response = scan.nextLine().toUpperCase();
         }
-
         System.out.println("\n" + "Booked seats after cancellations: " + event.getSeatsBooked());
         System.out.println("Available seats after cancellations: " + (event.getTotalSeats() - event.getSeatsBooked()) + "\n");
 
+
+
+        // closures
         scan.close();
     }
 }
