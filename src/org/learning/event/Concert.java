@@ -74,9 +74,9 @@ public class Concert extends Event{
                 ":00:20"), new BigDecimal("39.99"));
 
 
-        System.out.println(concertOne.toString());
-        System.out.println(concertTwo.toString());
-        System.out.println(concertThree.toString());
+        System.out.println(concertOne);
+        System.out.println(concertTwo);
+        System.out.println(concertThree);
 
 
     }
