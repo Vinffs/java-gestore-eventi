@@ -32,6 +32,10 @@ public class Concert extends Event{
         return String.format("%.2f€", getPrice());
     }
 
+    @Override
+    public String toString() {
+        return String.format("%s - %s - %s", formatDate() + " " + formatTime(), getTitle(), getFormattedPrice());
+    }
 
     // Getters
 
