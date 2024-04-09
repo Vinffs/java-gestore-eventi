@@ -20,6 +20,18 @@ public class Concert extends Event{
 
     // Methods
 
+    public String formatTime() {
+        return getTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+    }
+
+    public String formatDate() {
+        return getDate().format(DateTimeFormatter.ofPattern("d-MMM-uuuu"));
+    }
+
+    public String getFormattedPrice() {
+        return String.format("%.2f€", getPrice());
+    }
+
 
     // Getters
 
