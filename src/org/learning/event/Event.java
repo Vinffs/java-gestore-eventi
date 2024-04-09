@@ -39,5 +39,34 @@ public class Event {
         return totalSeats;
     }
 
+    // Getters
+    public String getTitle() {
+        return title;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public int getTotalSeats() {
+        return totalSeats;
+    }
+
+    public int getSeatsBooked() {
+        return seatsBooked;
+    }
+
+    // Setters
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDate(LocalDate date) throws IllegalArgumentException {
+        if (date.isBefore(LocalDate.now()) ) {
+            throw new IllegalArgumentException("You can't insert an event which date is in the past");
+        }
+        this.date = date;
+    }
 
 }
