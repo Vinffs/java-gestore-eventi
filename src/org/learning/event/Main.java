@@ -7,22 +7,29 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        // TODO: Validation of user input with error messages
-        System.out.print("Enter the title of the event: ");
-        String title = scan.nextLine();
+        Event event = null;
+        boolean flag = false;
+        while(!flag) {
+            System.out.print("Enter the title of the event: ");
+            String title = scan.nextLine();
 
-        System.out.print("Enter the date of the event (YYYY-MM-DD): ");
-        LocalDate date = LocalDate.parse(scan.nextLine());
+            System.out.print("Enter the date of the event (YYYY-MM-DD): ");
 
-        System.out.print("Enter the total number of seats available: ");
-        int totalSeats = Integer.parseInt(scan.nextLine());
+            LocalDate date = LocalDate.parse(scan.nextLine());
+
+            System.out.print("Enter the total number of seats available: ");
+            int totalSeats = Integer.parseInt(scan.nextLine());
+
+            try{
+                event = new Event(title, date, totalSeats);
+                flag = true;
+            } catch (IllegalArgumentException e){
+                System.out.println("\n" + "Error : " + e.getMessage().toUpperCase() + "\n");
+            }
+        }
 
 
-        Event event = new Event(title, date, totalSeats);
-
-        System.out.println("\n" + "Your Event has been created successfully!");
-        System.out.println();
-
+        System.out.println("\n" + "Your Event has been created successfully!" + "\n");
 
         System.out.print("Do you want to make a reservation? (Y/N) ");
         String response = scan.nextLine().toUpperCase();
@@ -39,10 +46,8 @@ public class Main {
             response = scan.nextLine().toUpperCase();
         }
 
-        System.out.println();
-        System.out.println("Booked seats: " + event.getSeatsBooked());
-        System.out.println("Available seats: " + (event.getTotalSeats() - event.getSeatsBooked()));
-        System.out.println();
+        System.out.println("\n" + "Booked seats: " + event.getSeatsBooked());
+        System.out.println("Available seats: " + (event.getTotalSeats() - event.getSeatsBooked()) + "\n");
 
 
 
@@ -61,10 +66,8 @@ public class Main {
             response = scan.nextLine().toUpperCase();
         }
 
-        System.out.println();
-        System.out.println("Booked seats after cancellations: " + event.getSeatsBooked());
-        System.out.println("Available seats after cancellations: " + (event.getTotalSeats() - event.getSeatsBooked()));
-        System.out.println();
+        System.out.println("\n" + "Booked seats after cancellations: " + event.getSeatsBooked());
+        System.out.println("Available seats after cancellations: " + (event.getTotalSeats() - event.getSeatsBooked()) + "\n");
 
         scan.close();
     }
